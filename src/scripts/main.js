@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 function setSuccessClass(message) {
   const notification = document.createElement('div');
@@ -28,8 +28,7 @@ const firstPromise = new Promise((resolve, reject) => {
   });
 });
 
-firstPromise.then(setSuccessClass);
-firstPromise.catch(setErrorClass);
+firstPromise.then(setSuccessClass).catch(setErrorClass);
 
 const secondPromise = new Promise((resolve) => {
   document.addEventListener('click', (ev) => {
