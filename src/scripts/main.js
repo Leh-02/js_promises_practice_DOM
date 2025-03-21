@@ -1,30 +1,30 @@
 'use strict';
 
-function setSuccessClass(promiseNumber) {
+function setSuccessClass(message) {
   const notification = document.createElement('div');
 
   notification.setAttribute('data-qa', 'notification');
   notification.classList.add('success');
-  notification.textContent = `${promiseNumber} promise was resolved`;
+  notification.textContent = message;
   document.body.appendChild(notification);
 }
 
-function setErrorClass(promiseNumber) {
+function setErrorClass(message) {
   const notification = document.createElement('div');
 
   notification.setAttribute('data-qa', 'notification');
   notification.classList.add('error');
-  notification.textContent = `${promiseNumber} promise was reject`;
+  notification.textContent = message;
   document.body.appendChild(notification);
 }
 
 const firstPromise = new Promise((resolve, reject) => {
   setTimeout(() => {
-    reject(new Error('First'));
+    reject(new Error('First promise was rejected'));
   }, 3000);
 
   document.addEventListener('click', () => {
-    resolve('First');
+    resolve('First promise was resolved');
   });
 });
 
@@ -36,7 +36,7 @@ const secondPromise = new Promise((resolve) => {
     ev.preventDefault();
 
     if (ev.button === 0 || ev.button === 2) {
-      resolve('Second');
+      resolve('Second promise was resolved');
     }
   });
 
@@ -44,7 +44,7 @@ const secondPromise = new Promise((resolve) => {
     ev.preventDefault();
 
     if (ev.button === 2) {
-      resolve('Second');
+      resolve('Second promise was resolved');
     }
   });
 });
@@ -59,7 +59,7 @@ const thirdPromise = new Promise((resolve) => {
     leftClick = true;
 
     if (ev.button === 0 && rightClick === true) {
-      resolve('Third');
+      resolve('Third promise was resolved');
     }
   });
 
@@ -68,7 +68,7 @@ const thirdPromise = new Promise((resolve) => {
     rightClick = true;
 
     if (ev.button === 2 && leftClick === true) {
-      resolve('Third');
+      resolve('Third promise was resolved');
     }
   });
 });
